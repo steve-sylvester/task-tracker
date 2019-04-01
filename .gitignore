@@ -1,0 +1,78 @@
+# ======================================
+# 🔹 GLOBAL / SYSTEM FILES
+# ======================================
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+*.swp
+*.swo
+*.bak
+*.tmp
+*.log
+*.lock
+
+# IDE configurations
+.vscode/
+.idea/
+*.iml
+
+# Git hooks / tools
+.gitconfig.local
+*.orig
+
+# ======================================
+# 🔹 PYTHON / DJANGO BACKEND
+# ======================================
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+env.bak/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django generated files
+db.sqlite3
+*.pyc
+*.pyo
+*.pyd
+local_settings.py
+
+
+# Logs, coverage, and cache
+*.log
+*.pot
+*.mo
+*.manifest
+.coverage
+coverage.xml
+*.cover
+.pytest_cache/
+nosetests.xml
+*.seed
+htmlcov/
+.cache/
+.mypy_cache/
+.dmypy.json
+.pyre/
+
+# Django migrations cache (keep migrations files!)
+# Note: do NOT ignore the actual migration scripts
+# */migrations/*.pyc
+
+# ======================================
+# 🔹 ENVIRONMENT FILES
+# ======================================
+
+.env
+.env.*
+!.env.example
+*.env.local
+*.envrc
+secrets.json

@@ -1,4 +1,3 @@
-# tasktrack/main.py
 import argparse
 import db, commands
 

@@ -1,6 +1,6 @@
 import sqlite3
 
-from config import DB_NAME
+from .config import DB_NAME
 
 
 def get_connection():

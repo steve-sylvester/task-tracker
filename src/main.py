@@ -1,5 +1,7 @@
 import argparse
-import db, commands
+
+from . import commands, db
+
 
 def main():
     parser = argparse.ArgumentParser(description="🧩 TaskTrack - simple task manager")
@@ -8,7 +10,9 @@ def main():
     # Add
     add_p = sub.add_parser("add", help="Add a new task")
     add_p.add_argument("title")
-    add_p.add_argument("--priority", choices=["low", "medium", "high"], default="medium")
+    add_p.add_argument(
+        "--priority", choices=["low", "medium", "high"], default="medium"
+    )
     add_p.add_argument("--due", help="Due date (YYYY-MM-DD)")
     add_p.set_defaults(func=commands.add_task)
 
@@ -34,6 +38,7 @@ def main():
 
     db.init_db()
     args.func(args)
+
 
 if __name__ == "__main__":
     main()

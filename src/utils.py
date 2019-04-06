@@ -1,10 +1,13 @@
 from datetime import datetime
-from config import DATE_FORMAT
+
+from .config import DATE_FORMAT
+
 
 def fmt_task(t):
     status = "✅" if t["is_done"] else "⏳"
     due = t["due_date"] if t["due_date"] else "-"
     return f"[{status}] #{t['id']} | {t['title']} | {t['priority']} | Due: {due}"
+
 
 def validate_date(date_str):
     if not date_str:

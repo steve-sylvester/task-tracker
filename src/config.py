@@ -1,2 +1,8 @@
 DB_NAME = "tasks.db"
 DATE_FORMAT = "%Y-%m-%d"
+RESET = "\033[0m"
+GREEN = "\033[32m"
+YELLOW = "\033[33m"
+RED = "\033[31m"
+CYAN = "\033[36m"
+GRAY = "\033[90m"

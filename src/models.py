@@ -12,12 +12,13 @@ class Task:
             conn.commit()
 
     @staticmethod
-    def list(show_all=False):
+    def list(show_all=False, sort_by="due_date"):
+        valid_sort = sort_by if sort_by in ["due_date", "priority", "id"] else "id"
         with get_connection() as conn:
             if show_all:
-                q = "SELECT * FROM tasks ORDER BY is_done, due_date"
+                q = f"SELECT * FROM tasks ORDER BY is_done, {valid_sort}"
             else:
-                q = "SELECT * FROM tasks WHERE is_done=0 ORDER BY due_date"
+                q = f"SELECT * FROM tasks WHERE is_done=0 ORDER BY {valid_sort}"
             return conn.execute(q).fetchall()
 
     @staticmethod

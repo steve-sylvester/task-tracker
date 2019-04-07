@@ -18,7 +18,13 @@ def main():
 
     # List
     list_p = sub.add_parser("list", help="List tasks")
-    list_p.add_argument("--all", action="store_true")
+    list_p.add_argument("--all", action="store_true", help="Include completed tasks")
+    list_p.add_argument(
+        "--sort",
+        choices=["id", "priority", "due_date"],
+        default="due_date",
+        help="Sort field",
+    )
     list_p.set_defaults(func=commands.list_tasks)
 
     # Done

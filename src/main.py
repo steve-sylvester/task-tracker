@@ -1,6 +1,7 @@
 import argparse
 
-from . import commands, db
+from src import db, commands
+
 
 
 def main():
@@ -36,6 +37,14 @@ def main():
     del_p = sub.add_parser("delete", help="Delete task")
     del_p.add_argument("id", type=int)
     del_p.set_defaults(func=commands.delete_task)
+
+    # Edit
+    edit_p = sub.add_parser("edit", help="Edit an existing task")
+    edit_p.add_argument("id", type=int)
+    edit_p.add_argument("--title", help="New title")
+    edit_p.add_argument("--priority", choices=["low", "medium", "high"], help="New priority")
+    edit_p.add_argument("--due", help="New due date (YYYY-MM-DD)")
+    edit_p.set_defaults(func=commands.edit_task)
 
     args = parser.parse_args()
     if not args.command:

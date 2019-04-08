@@ -28,3 +28,9 @@ def done_task(args):
 def delete_task(args):
     Task.delete(args.id)
     print(f"🗑️ Task #{args.id} deleted.")
+
+
+def edit_task(args):
+    due = validate_date(args.due)
+    Task.update(args.id, title=args.title, priority=args.priority, due_date=due)
+    print(f"📝 Task #{args.id} successfully updated.")

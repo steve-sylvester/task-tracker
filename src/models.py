@@ -12,6 +12,26 @@ class Task:
             conn.commit()
 
     @staticmethod
+    def update(task_id, title=None, priority=None, due_date=None):
+        updates = []
+        params = []
+        if title:
+            updates.append("title=?")
+            params.append(title)
+        if priority:
+            updates.append("priority=?")
+            params.append(priority)
+        if due_date:
+            updates.append("due_date=?")
+            params.append(due_date)
+        if not updates:
+            return
+        params.append(task_id)
+        with get_connection() as conn:
+            conn.execute(f"UPDATE tasks SET {', '.join(updates)} WHERE id=?", params)
+            conn.commit()
+
+    @staticmethod
     def list(show_all=False, sort_by="due_date"):
         valid_sort = sort_by if sort_by in ["due_date", "priority", "id"] else "id"
         with get_connection() as conn:

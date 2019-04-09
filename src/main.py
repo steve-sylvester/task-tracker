@@ -1,7 +1,7 @@
 import argparse
 
 from src import db, commands
-
+from src.reminder import start_reminders
 
 
 def main():
@@ -42,7 +42,9 @@ def main():
     edit_p = sub.add_parser("edit", help="Edit an existing task")
     edit_p.add_argument("id", type=int)
     edit_p.add_argument("--title", help="New title")
-    edit_p.add_argument("--priority", choices=["low", "medium", "high"], help="New priority")
+    edit_p.add_argument(
+        "--priority", choices=["low", "medium", "high"], help="New priority"
+    )
     edit_p.add_argument("--due", help="New due date (YYYY-MM-DD)")
     edit_p.set_defaults(func=commands.edit_task)
 
@@ -52,6 +54,8 @@ def main():
         return
 
     db.init_db()
+    start_reminders()
+
     args.func(args)
 
 
